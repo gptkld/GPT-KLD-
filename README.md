@@ -1,2 +1,2 @@
-# GPT-KLD-
-Ai college information assist 
+# GPT-KLD
+Ai college information assistant 
