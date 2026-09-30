@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT.KLD - AI College Information Assistant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .header {
+            background: #1f4e79;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        .chat-box {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            min-height: 400px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .welcome {
+            background: #e8f1fb;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 12px;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        .user {
+            background: #d9edf7;
+            text-align: right;
+        }
+
+        .bot {
+            background: #eeeeee;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        #question {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #bbb;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #sendBtn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #1f4e79;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #sendBtn:active {
+            transform: scale(0.97);
+        }
+
+        .examples {
+            margin-top: 15px;
+        }
+
+        .examples button {
+            margin: 4px;
+            padding: 8px 12px;
+            border: 1px solid #1f4e79;
+            border-radius: 20px;
+            background: white;
+            color: #1f4e79;
+        }
+
+        @media (max-width: 500px) {
+            .input-area {
+                flex-direction: column;
+            }
+
+            #sendBtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>GPT.KLD</h1>
+        <p>AI College Information Assistant</p>
+    </div>
+
+    <div class="container">
+
+        <div class="chat-box" id="chatBox">
+
+            <div class="welcome">
+                <strong>Welcome to GPT.KLD! 🎓</strong><br><br>
+                Ask me anything about Government Polytechnic, Kalyandurg.
+            </div>
+
+        </div>
+
+        <div class="examples">
+            <button onclick="askExample('What courses are offered?')">
+                Courses
+            </button>
+
+            <button onclick="askExample('What facilities does the college have?')">
+                Facilities
+            </button>
+
+            <button onclick="askExample('Does the college have a hostel?')">
+                Hostel
+            </button>
+
+            <button onclick="askExample('Tell me about placements')">
+                Placements
+            </button>
+        </div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="question"
+                placeholder="Ask something about the college..."
+                onkeydown="handleEnter(event)"
+            >
+
+            <button id="sendBtn" onclick="sendMessage()">
+                Send
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+
+        async function sendMessage() {
+
+            const input = document.getElementById("question");
+            const message = input.value.trim();
+
+            if (!message) {
+                return;
+            }
+
+            addMessage(message, "user");
+
+            input.value = "";
+
+            addMessage("Thinking... 🤖", "bot");
+
+            try {
+
+                const response = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        message: message
+                    })
+                });
+
+                const data = await response.json();
+
+                const chatBox = document.getElementById("chatBox");
+
+                const messages = chatBox.querySelectorAll(".message");
+                const thinkingMessage = messages[messages.length - 1];
+
+                if (thinkingMessage) {
+                    thinkingMessage.remove();
+                }
+
+                addMessage(data.reply, "bot");
+
+            } catch (error) {
+
+                const chatBox = document.getElementById("chatBox");
+
+                const messages = chatBox.querySelectorAll(".message");
+                const thinkingMessage = messages[messages.length - 1];
+
+                if (thinkingMessage) {
+                    thinkingMessage.remove();
+                }
+
+                addMessage(
+                    "Sorry, I couldn't connect to the GPT.KLD server. Please try again.",
+                    "bot"
+                );
+            }
+        }
+
+        function addMessage(text, type) {
+
+            const chatBox = document.getElementById("chatBox");
+
+            const messageDiv = document.createElement("div");
+
+            messageDiv.className = "message " + type;
+
+            messageDiv.textContent = text;
+
+            chatBox.appendChild(messageDiv);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function askExample(question) {
+
+            document.getElementById("question").value = question;
+
+            sendMessage();
+        }
+
+        function handleEnter(event) {
+
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+    </script>
+
+</body>
+</html>
