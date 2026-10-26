@@ -161,55 +161,20 @@
 
 <body>
 
-    <<div class="header">
-    <h1 class="college-name">Government Polytechnic Kalyandurg</h1>
-    <p>AI College Information Assistant</p>
+    <div class="header">
+    <div class="header-content">
+        <img
+            src="/college-banner.jpg"
+            alt="Government Polytechnic Kalyandurg logo"
+            class="college-logo"
+        >
+
+        <div>
+            <h1 class="college-name">Government Polytechnic Kalyandurg</h1>
+            <p>AI College Information Assistant</p>
+        </div>
     </div>
-
-    <div class="container">
-
-        <div class="chat-box" id="chatBox">
-
-            <div class="welcome">
-                <strong>Welcome to GPT.KLD! 🎓</strong><br><br>
-                Ask me anything about Government Polytechnic, Kalyandurg.
-            </div>
-
-        </div>
-
-        <div class="examples">
-            <button onclick="askExample('What courses are offered?')">
-                Courses
-            </button>
-
-            <button onclick="askExample('What facilities does the college have?')">
-                Facilities
-            </button>
-
-            <button onclick="askExample('Does the college have a hostel?')">
-                Hostel
-            </button>
-
-            <button onclick="askExample('Tell me about placements')">
-                Placements
-            </button>
-        </div>
-
-        <div class="input-area">
-            <input
-                type="text"
-                id="question"
-                placeholder="Ask something about the college..."
-                onkeydown="handleEnter(event)"
-            >
-
-            <button id="sendBtn" onclick="sendMessage()">
-                Send
-            </button>
-        </div>
-
     </div>
-
     <script>
 
         async function sendMessage() {
