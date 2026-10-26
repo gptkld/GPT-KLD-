@@ -159,7 +159,8 @@ ${message.trim()}
                 contents: prompt,
                 config: {
                     abortSignal: controller.signal,
-                    maxOutputTokens: 350
+                    maxOutputTokens: 700
+    
                 }
             });
         } finally {
