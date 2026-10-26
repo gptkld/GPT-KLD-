@@ -27,6 +27,34 @@
             color: white;
             padding: 20px;
             text-align: center;
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+.college-logo {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+}
+
+.college-name {
+    margin: 0;
+    font-size: clamp(12px, 3.5vw, 30px);
+    white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+    .college-logo {
+        width: 45px;
+    }
+
+    .header {
+        padding: 12px 5px;
+    }
+}
         }
 
         .header h1 {
