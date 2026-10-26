@@ -152,6 +152,8 @@ app.post("/api/chat", async (req, res) => {
             studentQuestion,
             collegeFAQ
         );
+        // Use a direct FAQ answer for common college questions
+// when a clear matching answer exists.
 
         const prompt = `
 You are GPT.KLD, the college information assistant for
