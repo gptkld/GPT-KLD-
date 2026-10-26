@@ -189,7 +189,7 @@ ANSWER:
             model: "gemini-3.5-flash-lite",
             contents: prompt,
             config: {
-                maxOutputTokens: 700,
+                maxOutputTokens: 400,
                 temperature: 0.2
             }
         });
