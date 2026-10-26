@@ -1,127 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="cnJJOmG__X0wI2h3w6hV0cXm352K4i5idE8Hsgd7wlA" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government Polytechnic Kalyandurg | AI College Assistant</title>
-    <meta name="description" content="Government Polytechnic Kalyandurg AI College Information Assistant. Find information about courses, admissions, facilities, hostel, and placements.">
+
+    <title>Government Polytechnic, Kalyandurg</title>
+
+    <meta name="description"
+        content="Official college information assistant for Government Polytechnic, Kalyandurg, Andhra Pradesh.">
+
+    <meta name="google-site-verification"
+        content="cnJJOmG__X0wI2h3w6hV0cXm352K4i5idE8Hsgd7wlA">
+
     <style>
         * {
             box-sizing: border-box;
-        }
-        .college-name {
-    margin: 0;
-    font-size: clamp(16px, 3.5vw, 30px);
-    white-space: nowrap;
         }
 
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f4f6f8;
+            color: #222;
         }
 
         .header {
             background: #1f4e79;
             color: white;
-            padding: 20px;
+            padding: 18px 12px;
             text-align: center;
+        }
+
         .header-content {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 14px;
+            max-width: 900px;
+            margin: auto;
         }
 
-.college-logo {
-    width: 90px;
-    height: auto;
-    object-fit: contain;
-}
-
-.college-name {
-    margin: 0;
-    font-size: clamp(12px, 3.5vw, 30px);
-    white-space: nowrap;
-}
-
-@media (max-width: 500px) {
-    .college-logo {
-        width: 45px;
-    }
-
-    .header {
-        padding: 12px 5px;
-    }
-}
+        .college-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            flex-shrink: 0;
+            background: white;
+            border-radius: 6px;
         }
 
-        .header h1 {
+        .college-name {
             margin: 0;
-            font-size: 30px;
+            font-size: clamp(17px, 3.5vw, 28px);
         }
 
         .header p {
             margin: 8px 0 0;
-            font-size: 16px;
+            font-size: 17px;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 750px;
             margin: 20px auto;
-            padding: 15px;
+            padding: 12px;
+        }
+
+        .welcome, .faq-section, .chat-box {
+            background: white;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+        }
+
+        h2 {
+            font-size: 20px;
+            margin: 0 0 10px;
+            color: #1f4e79;
+        }
+
+        .welcome p {
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .faq-section h3 {
+            margin: 0 0 10px;
+            font-size: 17px;
+        }
+
+        .faq-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .faq-buttons button {
+            padding: 10px 12px;
+            border: 1px solid #1f4e79;
+            border-radius: 20px;
+            background: #fff;
+            color: #1f4e79;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .faq-buttons button:hover {
+            background: #e8f1fb;
         }
 
         .chat-box {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            min-height: 400px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .welcome {
-            background: #e8f1fb;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            min-height: 180px;
+            max-height: 420px;
+            overflow-y: auto;
         }
 
         .message {
-            padding: 12px 15px;
+            padding: 12px 14px;
             margin: 10px 0;
             border-radius: 12px;
             line-height: 1.5;
-            white-space: pre-line;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
         }
 
         .user {
             background: #d9edf7;
             text-align: right;
+            margin-left: 15%;
         }
 
         .bot {
             background: #eeeeee;
+            margin-right: 8%;
         }
 
         .input-area {
             display: flex;
             gap: 8px;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         #question {
             flex: 1;
+            min-width: 0;
             padding: 14px;
             border: 1px solid #bbb;
             border-radius: 10px;
             font-size: 16px;
-            outline: none;
         }
 
         #sendBtn {
-            padding: 14px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 10px;
             background: #1f4e79;
@@ -130,24 +160,40 @@
             cursor: pointer;
         }
 
-        #sendBtn:active {
-            transform: scale(0.97);
+        #sendBtn:disabled {
+            opacity: 0.6;
         }
 
-        .examples {
-            margin-top: 15px;
-        }
-
-        .examples button {
-            margin: 4px;
-            padding: 8px 12px;
-            border: 1px solid #1f4e79;
-            border-radius: 20px;
-            background: white;
-            color: #1f4e79;
+        .footer {
+            text-align: center;
+            color: #555;
+            font-size: 13px;
+            padding: 10px;
         }
 
         @media (max-width: 500px) {
+            .header {
+                padding: 14px 8px;
+            }
+
+            .header-content {
+                gap: 9px;
+            }
+
+            .college-logo {
+                width: 52px;
+                height: 52px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .container {
+                margin: 10px auto;
+                padding: 10px;
+            }
+
             .input-area {
                 flex-direction: column;
             }
@@ -161,110 +207,198 @@
 
 <body>
 
-    <div class="header">
+<header class="header">
     <div class="header-content">
         <img
             src="/college-banner.jpg"
-            alt="Government Polytechnic Kalyandurg logo"
+            alt="College logo"
             class="college-logo"
+            onerror="this.style.display='none'"
         >
 
         <div>
-            <h1 class="college-name">Government Polytechnic Kalyandurg</h1>
+            <h1 class="college-name">
+                Government Polytechnic, Kalyandurg
+            </h1>
             <p>AI College Information Assistant</p>
         </div>
     </div>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <h2>Welcome to our College Assistant!</h2>
+        <p>
+            Ask questions about Government Polytechnic, Kalyandurg.
+            Choose a topic below or type your own question.
+        </p>
+    </section>
+
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>College Information</h3>
+        <div class="faq-buttons">
+            <button onclick="askExample('Tell me about the college')">
+                About the college
+            </button>
+            <button onclick="askExample('Where is the college located?')">
+                College location
+            </button>
+            <button onclick="askExample('When was the college established?')">
+                Establishment year
+            </button>
+        </div>
+
+        <h3 style="margin-top:18px">Admissions and Courses</h3>
+        <div class="faq-buttons">
+            <button onclick="askExample('What courses are available?')">
+                Available courses
+            </button>
+            <button onclick="askExample('Explain the admission process')">
+                Admission process
+            </button>
+            <button onclick="askExample('What is the college affiliation?')">
+                College affiliation
+            </button>
+        </div>
+
+        <h3 style="margin-top:18px">Facilities and Timings</h3>
+        <div class="faq-buttons">
+            <button onclick="askExample('What facilities are available?')">
+                College facilities
+            </button>
+            <button onclick="askExample('What are the college working hours?')">
+                Working hours
+            </button>
+            <button onclick="askExample('Tell me about the college library and laboratories')">
+                Library and labs
+            </button>
+        </div>
+
+        <h3 style="margin-top:18px">Other Information</h3>
+        <div class="faq-buttons">
+            <button onclick="askExample('How can I contact the college?')">
+                Contact information
+            </button>
+            <button onclick="askExample('Does the college provide hostel facilities?')">
+                Hostel facilities
+            </button>
+            <button onclick="askExample('Tell me about placement facilities')">
+                Placements
+            </button>
+        </div>
+    </section>
+
+    <section class="chat-box" id="chatBox"
+        aria-live="polite">
+        <div class="message bot">
+            Hello! Welcome to Government Polytechnic, Kalyandurg.
+            How can I help you?
+        </div>
+    </section>
+
+    <form class="input-area" id="chatForm">
+        <input
+            type="text"
+            id="question"
+            placeholder="Ask your college question..."
+            autocomplete="off"
+            aria-label="Your question"
+            required
+        >
+        <button type="submit" id="sendBtn">Send</button>
+    </form>
+
+    <div class="footer">
+        Government Polytechnic, Kalyandurg | College Information Assistant
     </div>
-    <script>
 
-        async function sendMessage() {
+</main>
 
-            const input = document.getElementById("question");
-            const message = input.value.trim();
+<script>
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("question");
+    const chatBox = document.getElementById("chatBox");
+    const sendBtn = document.getElementById("sendBtn");
 
-            if (!message) {
-                return;
+    function addMessage(text, type) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message " + type;
+        messageDiv.textContent = text;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        return messageDiv;
+    }
+
+    async function sendMessage() {
+        const message = input.value.trim();
+
+        if (!message || sendBtn.disabled) {
+            return;
+        }
+
+        addMessage(message, "user");
+        input.value = "";
+        sendBtn.disabled = true;
+
+        const thinking = addMessage("Thinking... 🤖", "bot");
+
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: message
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Server returned " + response.status);
             }
 
-            addMessage(message, "user");
+            const data = await response.json();
 
-            input.value = "";
+            thinking.remove();
 
-            addMessage("Thinking... 🤖", "bot");
-
-            try {
-
-                const response = await fetch("/api/chat", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        message: message
-                    })
-                });
-
-                const data = await response.json();
-
-                const chatBox = document.getElementById("chatBox");
-
-                const messages = chatBox.querySelectorAll(".message");
-                const thinkingMessage = messages[messages.length - 1];
-
-                if (thinkingMessage) {
-                    thinkingMessage.remove();
-                }
-
+            if (typeof data.reply === "string") {
                 addMessage(data.reply, "bot");
-
-            } catch (error) {
-
-                const chatBox = document.getElementById("chatBox");
-
-                const messages = chatBox.querySelectorAll(".message");
-                const thinkingMessage = messages[messages.length - 1];
-
-                if (thinkingMessage) {
-                    thinkingMessage.remove();
-                }
-
+            } else {
                 addMessage(
-                    "Sorry, I couldn't connect to the GPT.KLD server. Please try again.",
+                    "The server returned an unexpected response. Please try again.",
                     "bot"
                 );
             }
+        } catch (error) {
+            thinking.remove();
+
+            addMessage(
+                "Sorry, I couldn't connect to the chatbot server. Please try again.",
+                "bot"
+            );
+
+            console.error("Chat error:", error);
+        } finally {
+            sendBtn.disabled = false;
+            input.focus();
         }
+    }
 
-        function addMessage(text, type) {
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        sendMessage();
+    });
 
-            const chatBox = document.getElementById("chatBox");
-
-            const messageDiv = document.createElement("div");
-
-            messageDiv.className = "message " + type;
-
-            messageDiv.textContent = text;
-
-            chatBox.appendChild(messageDiv);
-
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function askExample(question) {
-
-            document.getElementById("question").value = question;
-
-            sendMessage();
-        }
-
-        function handleEnter(event) {
-
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        }
-
-    </script>
+    function askExample(question) {
+        input.value = question;
+        sendMessage();
+    }
+</script>
 
 </body>
 </html>
+
+ 
