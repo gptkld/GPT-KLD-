@@ -154,6 +154,101 @@ app.post("/api/chat", async (req, res) => {
         );
         // Use a direct FAQ answer for common college questions
 // when a clear matching answer exists.
+        // Answer common questions directly from the college FAQ.
+function getDirectFAQAnswer(question, faq) {
+    const q = question.toLowerCase().replace(/[^a-z0-9\s]/g, " ");
+
+    const directRules = [
+        {
+            patterns: [
+                /\bwhat courses\b/,
+                /\bwhich courses\b/,
+                /\bcourses available\b/,
+                /\bcourses offered\b/,
+                /\bbranches available\b/
+            ],
+            answer:
+                "Government Polytechnic, Kalyandurg offers diploma courses in Artificial Intelligence and Machine Learning (AIML), Electronics and Communication Engineering (ECE), and Civil Engineering."
+        },
+        {
+            patterns: [
+                /\beducational tours?\b/,
+                /\beducational trips?\b/
+            ],
+            answer:
+                "No. According to the college FAQ, educational tours are not conducted."
+        },
+        {
+            patterns: [
+                /\bworkshops?\b/
+            ],
+            answer:
+                "No. According to the college FAQ, workshops are not conducted."
+        },
+        {
+            patterns: [
+                /\bfarewell\b/
+            ],
+            answer:
+                "Yes. According to the college FAQ, farewell events are conducted for final-year students."
+        },
+        {
+            patterns: [
+                /\bcollege name\b/,
+                /\bname of (the )?college\b/
+            ],
+            answer:
+                "The college name is Government Polytechnic, Kalyandurg."
+        },
+        {
+            patterns: [
+                /\bwhere is (the )?college\b/,
+                /\bcollege location\b/,
+                /\bcollege address\b/
+            ],
+            answer:
+                "Government Polytechnic, Kalyandurg is located at Borampalli Village and Post, Kalyandurg, Andhra Pradesh 515761."
+        },
+        {
+            patterns: [
+                /\bcollege timings?\b/,
+                /\bcollege working hours\b/
+            ],
+            answer:
+                "The supplied FAQ lists college timings as 10:00 AM to 4:45 PM. Please confirm the current timetable with the college."
+        },
+        {
+            patterns: [
+                /\bworking days\b/,
+                /\bwhich days.*college\b/
+            ],
+            answer:
+                "The supplied FAQ lists Monday through Saturday as working days. Please confirm the current timetable with the college."
+        }
+    ];
+
+    for (const rule of directRules) {
+        if (rule.patterns.some(pattern => pattern.test(q))) {
+            return rule.answer;
+        }
+    }
+
+    return null;
+}
+
+// Return a direct answer when a known question matches.
+const directAnswer = getDirectFAQAnswer(
+    studentQuestion,
+    collegeFAQ
+);
+
+if (directAnswer) {
+    console.log("Answered directly from college FAQ.");
+
+    return res.json({
+        reply: directAnswer
+    });
+}
 
         const prompt = `
 You are GPT.KLD, the college information assistant for
