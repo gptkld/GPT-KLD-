@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="cnJJOmG__X0wI2h3w6hV0cXm352K4i5idE8Hsgd7wlA" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Government Polytechnic, Kalyandurg | AI College Assistant</title>
+    <meta
+        name="google-site-verification"
+        content="cnJJOmG__X0wI2h3w6hV0cXm352K4i5idE8Hsgd7wlA"
+    >
 
-    <meta name="description" content="Government Polytechnic, Kalyandurg AI College Information Assistant. Find information about courses, admissions, facilities, hostel, and placements.">
+    <meta
+        name="description"
+        content="GPT.KLD is an AI-powered college information assistant for Government Polytechnic, Kalyandurg. Find college courses, admissions information and academic resources."
+    >
+
+    <meta name="theme-color" content="#12345a">
+
+    <title>Government Polytechnic, Kalyandurg | AI College Assistant</title>
 
     <style>
         * {
@@ -16,130 +25,210 @@
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f5fa;
+            color: #1e293b;
+            line-height: 1.5;
         }
 
         .header {
-            background: #1f4e79;
+            background: linear-gradient(135deg, #102c50, #1d5b91);
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 18px 14px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
         }
 
         .header-content {
+            max-width: 1000px;
+            margin: auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .college-logo {
-            width: 90px;
-            height: auto;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
+            border-radius: 10px;
+            background: white;
+            padding: 4px;
             flex-shrink: 0;
         }
 
+        .heading-text {
+            min-width: 0;
+        }
+
         .college-name {
-            margin: 0;
-            font-size: clamp(12px, 3.5vw, 30px);
+            font-size: clamp(12px, 3.4vw, 29px);
+            line-height: 1.25;
+            margin: 0 0 5px;
             white-space: nowrap;
+            letter-spacing: 0;
         }
 
         .header p {
-            margin: 8px 0 0;
-            font-size: 16px;
+            margin: 0;
+            font-size: clamp(11px, 2.5vw, 16px);
+            color: #e1edff;
         }
 
         .container {
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 15px;
-        }
-
-        .chat-box {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            min-height: 400px;
-            max-height: 500px;
-            overflow-y: auto;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            max-width: 850px;
+            margin: 28px auto;
+            padding: 0 14px;
         }
 
         .welcome {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .welcome h2 {
+            margin: 0 0 8px;
+            color: #12345a;
+            font-size: 26px;
+        }
+
+        .welcome p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        .chat-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(15, 35, 65, 0.10);
+            border: 1px solid #e2e8f0;
+        }
+
+        .chat-title {
             background: #e8f1fb;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            padding: 13px 16px;
+            color: #12345a;
+            font-weight: bold;
+            border-bottom: 1px solid #dbe7f5;
+        }
+
+        .chat-box {
+            height: 360px;
+            overflow-y: auto;
+            padding: 16px;
+            background: #fbfdff;
+            scroll-behavior: smooth;
         }
 
         .message {
-            padding: 12px 15px;
-            margin: 10px 0;
-            border-radius: 12px;
-            line-height: 1.5;
-            white-space: pre-line;
+            max-width: 88%;
+            padding: 11px 14px;
+            margin: 0 0 13px;
+            border-radius: 13px;
             overflow-wrap: anywhere;
-        }
-
-        .user {
-            background: #d9edf7;
-            text-align: right;
+            white-space: pre-wrap;
+            font-size: 15px;
         }
 
         .bot {
-            background: #eeeeee;
+            background: #e9f1fb;
+            color: #183754;
+            border-bottom-left-radius: 4px;
+            margin-right: auto;
+        }
+
+        .user {
+            background: #185b91;
+            color: white;
+            border-bottom-right-radius: 4px;
+            margin-left: auto;
+        }
+
+        .typing {
+            color: #64748b;
+            font-size: 14px;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px 14px 0;
+        }
+
+        .example-btn {
+            border: 1px solid #b9d2ed;
+            background: white;
+            color: #174b79;
+            padding: 8px 11px;
+            border-radius: 18px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .example-btn:hover {
+            background: #e8f1fb;
         }
 
         .input-area {
             display: flex;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 9px;
+            padding: 14px;
+            border-top: 1px solid #e2e8f0;
+            background: white;
         }
 
         #question {
             flex: 1;
             min-width: 0;
-            padding: 14px;
-            border: 1px solid #bbb;
+            border: 1px solid #cbd5e1;
             border-radius: 10px;
-            font-size: 16px;
+            padding: 12px;
+            font-size: 15px;
             outline: none;
         }
 
+        #question:focus {
+            border-color: #185b91;
+            box-shadow: 0 0 0 2px rgba(24, 91, 145, 0.12);
+        }
+
         #sendBtn {
-            padding: 14px 20px;
+            background: #185b91;
+            color: white;
             border: none;
             border-radius: 10px;
-            background: #1f4e79;
-            color: white;
-            font-size: 16px;
+            padding: 0 18px;
+            font-size: 15px;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        #sendBtn:active {
-            transform: scale(0.97);
+        #sendBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
-        .examples {
-            margin-top: 15px;
+        .note {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin: 14px 4px;
         }
 
-        .examples button {
-            margin: 4px;
-            padding: 8px 12px;
-            border: 1px solid #1f4e79;
-            border-radius: 20px;
-            background: white;
-            color: #1f4e79;
-            cursor: pointer;
+        footer {
+            text-align: center;
+            padding: 20px 12px;
+            color: #64748b;
+            font-size: 13px;
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 420px) {
             .header {
-                padding: 12px 5px;
+                padding: 15px 8px;
             }
 
             .header-content {
@@ -148,94 +237,169 @@
 
             .college-logo {
                 width: 45px;
+                height: 45px;
             }
 
-            .college-name {
-                font-size: clamp(11px, 3.5vw, 18px);
+            .container {
+                margin-top: 20px;
+                padding: 0 10px;
             }
 
-            .header p {
+            .welcome h2 {
+                font-size: 22px;
+            }
+
+            .chat-box {
+                height: 340px;
+                padding: 12px;
+            }
+
+            .message {
+                max-width: 94%;
                 font-size: 14px;
             }
 
             .input-area {
-                flex-direction: column;
+                padding: 10px;
+                gap: 7px;
+            }
+
+            #question {
+                padding: 10px;
             }
 
             #sendBtn {
-                width: 100%;
+                padding: 0 13px;
             }
         }
     </style>
 </head>
 
 <body>
-
     <header class="header">
         <div class="header-content">
-
             <img
                 src="/college-banner.jpg"
-                alt="Government Polytechnic, Kalyandurg logo"
+                alt="College logo"
                 class="college-logo"
+                onerror="this.style.display='none'"
             >
 
-            <div>
+            <div class="heading-text">
                 <h1 class="college-name">
-                    Government Polytechnic Kalyandurg
+                    Government Polytechnic, Kalyandurg
                 </h1>
-
                 <p>AI College Information Assistant</p>
             </div>
-
         </div>
     </header>
 
     <main class="container">
+        <section class="welcome">
+            <h2>Welcome to GPT.KLD</h2>
+            <p>Ask questions about your college and get helpful answers.</p>
+        </section>
 
-        <div class="chat-box" id="chatBox">
-
-            <div class="welcome">
-                <strong>Welcome to GPT.KLD!</strong>
-                <p>
-                    Ask me anything about Government Polytechnic,
-                    Kalyandurg, including courses, admissions,
-                    facilities, and college information.
-                </p>
+        <section class="chat-card" aria-label="College assistant chat">
+            <div class="chat-title">
+                🎓 College Help Assistant
             </div>
 
-        </div>
-
-        <form class="input-area" id="chatForm">
-            <input
-                type="text"
-                id="question"
-                placeholder="Ask your college question..."
-                autocomplete="off"
-                required
+            <div
+                id="chatBox"
+                class="chat-box"
+                role="log"
+                aria-live="polite"
             >
+                <div class="message bot">
+                    Hello! Welcome to Government Polytechnic, Kalyandurg.
 
-            <button type="submit" id="sendBtn">Send</button>
-        </form>
+                    You can ask me about courses, admissions, facilities,
+                    college activities, and other information available
+                    in the college FAQ.
+                </div>
+            </div>
 
+            <div class="examples">
+                <button class="example-btn" data-question="What courses are available in the college?">
+                    Available courses
+                </button>
+
+                <button class="example-btn" data-question="Tell me about the college.">
+                    About college
+                </button>
+
+                <button class="example-btn" data-question="Are educational tours conducted?">
+                    Educational tours
+                </button>
+
+                <button class="example-btn" data-question="Are farewell events conducted?">
+                    Farewell events
+                </button>
+            </div>
+
+            <form id="chatForm" class="input-area">
+                <input
+                    id="question"
+                    type="text"
+                    placeholder="Ask your college question..."
+                    aria-label="Type your question"
+                    maxlength="1000"
+                    autocomplete="off"
+                    required
+                >
+
+                <button id="sendBtn" type="submit">Send</button>
+            </form>
+        </section>
+
+        <p class="note">
+            Answers are based on the available college FAQ.
+            Please contact the college to confirm important details.
+        </p>
     </main>
 
-    <script>
-        async function sendMessage() {
-            const input = document.getElementById("question");
-            const message = input.value.trim();
+    <footer>
+        GPT.KLD · Government Polytechnic, Kalyandurg
+    </footer>
 
-            if (!message) {
+    <script>
+        const chatBox = document.getElementById("chatBox");
+        const chatForm = document.getElementById("chatForm");
+        const questionInput = document.getElementById("question");
+        const sendBtn = document.getElementById("sendBtn");
+
+        function addMessage(text, sender) {
+            const message = document.createElement("div");
+            message.className = "message " + sender;
+
+            // textContent prevents HTML from being injected into chat.
+            message.textContent = text;
+
+            chatBox.appendChild(message);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            return message;
+        }
+
+        async function sendQuestion(question) {
+            const cleanedQuestion = question.trim();
+
+            if (!cleanedQuestion || sendBtn.disabled) {
                 return;
             }
 
-            addMessage(message, "user");
-            input.value = "";
+            addMessage(cleanedQuestion, "user");
 
-            const sendBtn = document.getElementById("sendBtn");
+            questionInput.value = "";
             sendBtn.disabled = true;
+            sendBtn.textContent = "...";
 
-            const thinkingMessage = addMessage("Thinking... 🤖", "bot");
+            const typing = document.createElement("div");
+            typing.className = "typing";
+            typing.textContent = "GPT.KLD is preparing your answer...";
+            chatBox.appendChild(typing);
+            chatBox.scrollTop = chatBox.scrollHeight;
 
             try {
                 const response = await fetch("/api/chat", {
@@ -244,72 +408,61 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        message: message
+                        message: cleanedQuestion
                     })
                 });
 
-                if (!response.ok) {
-                    throw new Error("Server error: " + response.status);
+                let data;
+
+                try {
+                    data = await response.json();
+                } catch {
+                    throw new Error("The server returned an invalid response.");
                 }
 
-                const data = await response.json();
-                thinkingMessage.remove();
-
-                if (typeof data.reply === "string") {
-                    addMessage(data.reply, "bot");
-                } else {
+                if (!response.ok) {
                     addMessage(
-                        "Sorry, the server returned an unexpected response.",
+                        data.reply ||
+                        "The service is temporarily unavailable. Please try again.",
                         "bot"
                     );
+                    return;
                 }
 
-            } catch (error) {
-                thinkingMessage.remove();
-
                 addMessage(
-                    "Sorry, I couldn't connect to the GPT.KLD server. Please try again.",
+                    data.reply || "Sorry, I couldn't prepare an answer.",
                     "bot"
                 );
 
-                console.error("Chat error:", error);
+            } catch (error) {
+                console.error("Chat request failed:", error);
+
+                addMessage(
+                    "I couldn't connect to the assistant. Please check your internet connection and try again.",
+                    "bot"
+                );
 
             } finally {
+                typing.remove();
                 sendBtn.disabled = false;
-                input.focus();
+                sendBtn.textContent = "Send";
+                questionInput.focus();
             }
         }
 
-        function addMessage(text, type) {
-            const chatBox = document.getElementById("chatBox");
-            const messageDiv = document.createElement("div");
+        chatForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            sendQuestion(questionInput.value);
+        });
 
-            messageDiv.className = "message " + type;
-            messageDiv.textContent = text;
-
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            return messageDiv;
-        }
-
-        function askExample(question) {
-            document.getElementById("question").value = question;
-            sendMessage();
-        }
-
-        document.getElementById("chatForm").addEventListener(
-            "submit",
-            function(event) {
-                event.preventDefault();
-                sendMessage();
-            }
-        );
+        document.querySelectorAll(".example-btn").forEach(button => {
+            button.addEventListener("click", function() {
+                sendQuestion(button.dataset.question);
+            });
+        });
     </script>
-
 </body>
 </html>
+        
 
-
-
- 
+        
